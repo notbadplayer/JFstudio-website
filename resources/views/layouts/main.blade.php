@@ -15,6 +15,8 @@
     </head>
     <body id="page-top">
 
+        {{ dd($articles) }}
+
         @include('layouts.navigation')
         @include('layouts.header')
         @include('layouts.content')
