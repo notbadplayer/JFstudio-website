@@ -1,0 +1,32 @@
+/*
+ * ATTENTION: An "eval-source-map" devtool has been used.
+ * This devtool is neither made for production nor for readable output files.
+ * It uses "eval()" calls to create a separate source file with attached SourceMaps in the browser devtools.
+ * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
+ * or disable the default devtool with "devtool: false".
+ * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
+ */
+/******/ (() => { // webpackBootstrap
+/******/ 	var __webpack_modules__ = ({
+
+/***/ "./resources/js/template.js":
+/*!**********************************!*\
+  !*** ./resources/js/template.js ***!
+  \**********************************/
+/***/ (() => {
+
+eval("/*!\n* Start Bootstrap - Grayscale v7.0.3 (https://startbootstrap.com/theme/grayscale)\n* Copyright 2013-2021 Start Bootstrap\n* Licensed under MIT (https://github.com/StartBootstrap/startbootstrap-grayscale/blob/master/LICENSE)\n*/\n//\n// Scripts\n//\nwindow.addEventListener('DOMContentLoaded', function (event) {\n  // Navbar shrink function\n  var navbarShrink = function navbarShrink() {\n    var navbarCollapsible = document.body.querySelector('#mainNav');\n\n    if (!navbarCollapsible) {\n      return;\n    }\n\n    if (window.scrollY === 0) {\n      navbarCollapsible.classList.remove('navbar-shrink');\n    } else {\n      navbarCollapsible.classList.add('navbar-shrink');\n    }\n  }; // Shrink the navbar\n\n\n  navbarShrink(); // Shrink the navbar when page is scrolled\n\n  document.addEventListener('scroll', navbarShrink); // Collapse responsive navbar when toggler is visible\n\n  var navbarToggler = document.body.querySelector('.navbar-toggler');\n  var responsiveNavItems = [].slice.call(document.querySelectorAll('#navbarResponsive .nav-link'));\n  responsiveNavItems.map(function (responsiveNavItem) {\n    responsiveNavItem.addEventListener('click', function () {\n      if (window.getComputedStyle(navbarToggler).display !== 'none') {\n        navbarToggler.click();\n      }\n    });\n  });\n});//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvdGVtcGxhdGUuanM/M2MxZiJdLCJuYW1lcyI6WyJ3aW5kb3ciLCJhZGRFdmVudExpc3RlbmVyIiwiZXZlbnQiLCJuYXZiYXJTaHJpbmsiLCJuYXZiYXJDb2xsYXBzaWJsZSIsImRvY3VtZW50IiwiYm9keSIsInF1ZXJ5U2VsZWN0b3IiLCJzY3JvbGxZIiwiY2xhc3NMaXN0IiwicmVtb3ZlIiwiYWRkIiwibmF2YmFyVG9nZ2xlciIsInJlc3BvbnNpdmVOYXZJdGVtcyIsInNsaWNlIiwiY2FsbCIsInF1ZXJ5U2VsZWN0b3JBbGwiLCJtYXAiLCJyZXNwb25zaXZlTmF2SXRlbSIsImdldENvbXB1dGVkU3R5bGUiLCJkaXNwbGF5IiwiY2xpY2siXSwibWFwcGluZ3MiOiJBQUFBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFFQUEsTUFBTSxDQUFDQyxnQkFBUCxDQUF3QixrQkFBeEIsRUFBNEMsVUFBQUMsS0FBSyxFQUFJO0FBRWpEO0FBQ0EsTUFBSUMsWUFBWSxHQUFHLFNBQWZBLFlBQWUsR0FBWTtBQUMzQixRQUFNQyxpQkFBaUIsR0FBR0MsUUFBUSxDQUFDQyxJQUFULENBQWNDLGFBQWQsQ0FBNEIsVUFBNUIsQ0FBMUI7O0FBQ0EsUUFBSSxDQUFDSCxpQkFBTCxFQUF3QjtBQUNwQjtBQUNIOztBQUNELFFBQUlKLE1BQU0sQ0FBQ1EsT0FBUCxLQUFtQixDQUF2QixFQUEwQjtBQUN0QkosTUFBQUEsaUJBQWlCLENBQUNLLFNBQWxCLENBQTRCQyxNQUE1QixDQUFtQyxlQUFuQztBQUNILEtBRkQsTUFFTztBQUNITixNQUFBQSxpQkFBaUIsQ0FBQ0ssU0FBbEIsQ0FBNEJFLEdBQTVCLENBQWdDLGVBQWhDO0FBQ0g7QUFFSixHQVhELENBSGlELENBZ0JqRDs7O0FBQ0FSLEVBQUFBLFlBQVksR0FqQnFDLENBbUJqRDs7QUFDQUUsRUFBQUEsUUFBUSxDQUFDSixnQkFBVCxDQUEwQixRQUExQixFQUFvQ0UsWUFBcEMsRUFwQmlELENBd0JqRDs7QUFDQSxNQUFNUyxhQUFhLEdBQUdQLFFBQVEsQ0FBQ0MsSUFBVCxDQUFjQyxhQUFkLENBQTRCLGlCQUE1QixDQUF0QjtBQUNBLE1BQU1NLGtCQUFrQixHQUFHLEdBQUdDLEtBQUgsQ0FBU0MsSUFBVCxDQUN2QlYsUUFBUSxDQUFDVyxnQkFBVCxDQUEwQiw2QkFBMUIsQ0FEdUIsQ0FBM0I7QUFHQUgsRUFBQUEsa0JBQWtCLENBQUNJLEdBQW5CLENBQXVCLFVBQVVDLGlCQUFWLEVBQTZCO0FBQ2hEQSxJQUFBQSxpQkFBaUIsQ0FBQ2pCLGdCQUFsQixDQUFtQyxPQUFuQyxFQUE0QyxZQUFNO0FBQzlDLFVBQUlELE1BQU0sQ0FBQ21CLGdCQUFQLENBQXdCUCxhQUF4QixFQUF1Q1EsT0FBdkMsS0FBbUQsTUFBdkQsRUFBK0Q7QUFDM0RSLFFBQUFBLGFBQWEsQ0FBQ1MsS0FBZDtBQUNIO0FBQ0osS0FKRDtBQUtILEdBTkQ7QUFRSCxDQXJDRCIsInNvdXJjZXNDb250ZW50IjpbIi8qIVxuKiBTdGFydCBCb290c3RyYXAgLSBHcmF5c2NhbGUgdjcuMC4zIChodHRwczovL3N0YXJ0Ym9vdHN0cmFwLmNvbS90aGVtZS9ncmF5c2NhbGUpXG4qIENvcHlyaWdodCAyMDEzLTIwMjEgU3RhcnQgQm9vdHN0cmFwXG4qIExpY2Vuc2VkIHVuZGVyIE1JVCAoaHR0cHM6Ly9naXRodWIuY29tL1N0YXJ0Qm9vdHN0cmFwL3N0YXJ0Ym9vdHN0cmFwLWdyYXlzY2FsZS9ibG9iL21hc3Rlci9MSUNFTlNFKVxuKi9cbi8vXG4vLyBTY3JpcHRzXG4vL1xuXG53aW5kb3cuYWRkRXZlbnRMaXN0ZW5lcignRE9NQ29udGVudExvYWRlZCcsIGV2ZW50ID0+IHtcblxuICAgIC8vIE5hdmJhciBzaHJpbmsgZnVuY3Rpb25cbiAgICB2YXIgbmF2YmFyU2hyaW5rID0gZnVuY3Rpb24gKCkge1xuICAgICAgICBjb25zdCBuYXZiYXJDb2xsYXBzaWJsZSA9IGRvY3VtZW50LmJvZHkucXVlcnlTZWxlY3RvcignI21haW5OYXYnKTtcbiAgICAgICAgaWYgKCFuYXZiYXJDb2xsYXBzaWJsZSkge1xuICAgICAgICAgICAgcmV0dXJuO1xuICAgICAgICB9XG4gICAgICAgIGlmICh3aW5kb3cuc2Nyb2xsWSA9PT0gMCkge1xuICAgICAgICAgICAgbmF2YmFyQ29sbGFwc2libGUuY2xhc3NMaXN0LnJlbW92ZSgnbmF2YmFyLXNocmluaycpXG4gICAgICAgIH0gZWxzZSB7XG4gICAgICAgICAgICBuYXZiYXJDb2xsYXBzaWJsZS5jbGFzc0xpc3QuYWRkKCduYXZiYXItc2hyaW5rJylcbiAgICAgICAgfVxuXG4gICAgfTtcblxuICAgIC8vIFNocmluayB0aGUgbmF2YmFyXG4gICAgbmF2YmFyU2hyaW5rKCk7XG5cbiAgICAvLyBTaHJpbmsgdGhlIG5hdmJhciB3aGVuIHBhZ2UgaXMgc2Nyb2xsZWRcbiAgICBkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdzY3JvbGwnLCBuYXZiYXJTaHJpbmspO1xuXG5cblxuICAgIC8vIENvbGxhcHNlIHJlc3BvbnNpdmUgbmF2YmFyIHdoZW4gdG9nZ2xlciBpcyB2aXNpYmxlXG4gICAgY29uc3QgbmF2YmFyVG9nZ2xlciA9IGRvY3VtZW50LmJvZHkucXVlcnlTZWxlY3RvcignLm5hdmJhci10b2dnbGVyJyk7XG4gICAgY29uc3QgcmVzcG9uc2l2ZU5hdkl0ZW1zID0gW10uc2xpY2UuY2FsbChcbiAgICAgICAgZG9jdW1lbnQucXVlcnlTZWxlY3RvckFsbCgnI25hdmJhclJlc3BvbnNpdmUgLm5hdi1saW5rJylcbiAgICApO1xuICAgIHJlc3BvbnNpdmVOYXZJdGVtcy5tYXAoZnVuY3Rpb24gKHJlc3BvbnNpdmVOYXZJdGVtKSB7XG4gICAgICAgIHJlc3BvbnNpdmVOYXZJdGVtLmFkZEV2ZW50TGlzdGVuZXIoJ2NsaWNrJywgKCkgPT4ge1xuICAgICAgICAgICAgaWYgKHdpbmRvdy5nZXRDb21wdXRlZFN0eWxlKG5hdmJhclRvZ2dsZXIpLmRpc3BsYXkgIT09ICdub25lJykge1xuICAgICAgICAgICAgICAgIG5hdmJhclRvZ2dsZXIuY2xpY2soKTtcbiAgICAgICAgICAgIH1cbiAgICAgICAgfSk7XG4gICAgfSk7XG5cbn0pO1xuIl0sImZpbGUiOiIuL3Jlc291cmNlcy9qcy90ZW1wbGF0ZS5qcy5qcyIsInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///./resources/js/template.js\n");
+
+/***/ })
+
+/******/ 	});
+/************************************************************************/
+/******/ 	
+/******/ 	// startup
+/******/ 	// Load entry module and return exports
+/******/ 	// This entry module can't be inlined because the eval-source-map devtool is used.
+/******/ 	var __webpack_exports__ = {};
+/******/ 	__webpack_modules__["./resources/js/template.js"]();
+/******/ 	
+/******/ })()
+;
