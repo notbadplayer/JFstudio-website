@@ -8,9 +8,9 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-                <li class="nav-item"><a class="nav-link" href="#signup">Contact</a></li>
+                @foreach ($subsites as $subsite)
+                    <li class="nav-item"><a class="nav-link" href="#about">{{ $subsite['name'] }}</a></li>
+                @endforeach
             </ul>
         </div>
     </div>

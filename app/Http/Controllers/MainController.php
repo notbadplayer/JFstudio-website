@@ -4,16 +4,24 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Models\article;
+use App\Models\subsite;
 use Illuminate\Http\Request;
 
 class MainController extends Controller
 {
     public function index()
     {
-        $articles = article::all();
+        $articles = article::published()
+        ->get();
+
+        $subsites = subsite::visible()
+        ->get();
+
+
 
         return view('layouts.main', [
-            'articles' => $articles,
+            'subsites' => $subsites,
+            'articles' => $articles
         ]);
     }
 }
