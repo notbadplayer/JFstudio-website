@@ -10,6 +10,10 @@
         "production": "mix --production"
     },
     "devDependencies": {
+        "@fortawesome/fontawesome-free": "^5.13.0",
+        "@fortawesome/fontawesome-free-regular": "^5.0.13",
+        "@fortawesome/free-brands-svg-icons": "^5.13.0",
+        "@fortawesome/free-solid-svg-icons": "^5.13.0",
         "axios": "^0.21",
         "bootstrap": "^5.1.1",
         "jquery": "^3.6",
