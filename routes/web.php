@@ -22,7 +22,8 @@ Route::get('/', [MainController::class, 'index'])
 Route::group([
     'prefix' => 'administrator',
     'namespace' => 'Admin',
-    'as' => 'admin.'
+    'as' => 'admin.',
+    'middleware' => ['auth'],
 ], function(){
 
     Route::get('', [AdminController::class, 'index'])
