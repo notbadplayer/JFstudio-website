@@ -29,6 +29,11 @@ Route::group([
     Route::get('', [AdminController::class, 'index'])
     ->name('mainpage');
 
+    Route::get('subsites', [AdminController::class, 'subsites'])
+    ->name('subsites');
+
+
+
 });
 
 Auth::routes();

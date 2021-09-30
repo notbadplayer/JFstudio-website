@@ -14,4 +14,11 @@ class AdminController extends Controller
     {
         return view('admin.main');
     }
+
+    public function subsites()
+    {
+        return view('admin.control.subsites', [
+            'subsites' => subsite::all(),
+        ]);
+    }
 }

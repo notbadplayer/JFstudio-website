@@ -4,7 +4,7 @@
 </a>
 
 <div class="sb-sidenav-menu-heading">Struktura</div>
-<a class="nav-link" href="">
+<a class="nav-link" href="{{ route('admin.subsites') }}">
     <div class="sb-nav-link-icon"><i class="fas fa-cubes"></i></div>
     Ustaw podstrony
 </a>
@@ -23,7 +23,7 @@
 </a>
 
 <div class="sb-sidenav-menu-heading">Statystyki</div>
-<a class="nav-link" href="">
+<a class="nav-link" href="#">
     <div class="sb-nav-link-icon"><i class="fas fa-ruler-vertical"></i></div>
     Wyświetl statystyki
 </a>

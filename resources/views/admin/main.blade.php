@@ -65,7 +65,7 @@
                 </div>
                 <div id="layoutSidenav_content">
                     <main>
-                        <div class="container-fluid">
+                        <div class="container-fluid pt-5">
                             @include('admin.messages')
                             @yield('content')
                         </div>
