@@ -24,18 +24,21 @@ class AdminController extends Controller
         ]);
     }
 
-    public function addSubsite(addSubsite $request)
+
+    public function addSubsiteForm()
     {
         $orderList = subsite::count('order');
         $orderList++;
 
-        if ($request->isMethod('GET'))
-        {
         return view('admin.control.addSubsite',[
             'orderList' => $orderList,
         ]);
-        }
+    }
 
+    public function addSubsite(addSubsite $request)
+    {
+        $data = $request->validated();
+        dd($data);
     }
 
     public function subsitesChangeName(ChangeSubsiteName $request)

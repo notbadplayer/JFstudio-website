@@ -37,6 +37,6 @@
     </div>
 </div>
 
-<a href="{{ route('admin.addSubsite') }}" class="btn btn-primary mb-1">Dodaj podstronę</a>
+<a href="{{ route('admin.addSubsiteForm') }}" class="btn btn-primary mb-1">Dodaj podstronę</a>
 
 @endsection

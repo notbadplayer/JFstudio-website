@@ -12,7 +12,7 @@
                         <div class="col-auto">
                             <div class="mb-3">
                                 <label for="addSubsiteName" class="form-label">Nazwa podstrony: </label>
-                                <input type="text" class="form-control" id="addSubsiteName" aria-describedby="subsiteName">
+                                <input type="text" class="form-control" name="subsiteName" id="addSubsiteName" aria-describedby="subsiteName">
                                 <div id="subsiteName" class="form-text">Podaj nazwę nowej podstrony.</div>
                               </div>
                         </div>
