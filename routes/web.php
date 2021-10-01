@@ -32,6 +32,12 @@ Route::group([
     Route::get('subsites', [AdminController::class, 'subsites'])
     ->name('subsites');
 
+    Route::match(['get', 'post'],'addSubsite', [AdminController::class, 'addSubsite'])
+    ->name('addSubsite');
+
+    Route::post('subsites/rate', [AdminController::class, 'subsitesChangeName'])
+    ->name('subsites.changeName');
+
 
 
 });

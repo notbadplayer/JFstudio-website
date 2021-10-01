@@ -65,7 +65,7 @@
                 </div>
                 <div id="layoutSidenav_content">
                     <main>
-                        <div class="container-fluid pt-5">
+                        <div class="container-fluid px-2 px-sm-4 px-xl-5 pt-5">
                             @include('admin.messages')
                             @yield('content')
                         </div>
@@ -86,7 +86,7 @@
             <div id="layoutAuthentication">
                 <div id="layoutAuthentication_content">
                     <main>
-                        <div class="container-fluid">
+                        <div class="container-fluid px-2">
                             @yield('content')
                         </div>
                     </main>
