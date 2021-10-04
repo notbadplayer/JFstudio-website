@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\addSubsite;
 use App\Models\subsite;
+use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -22,13 +23,23 @@ class AdminController extends Controller
     }
 
 
-    public function addSubsiteForm()
+    public function addOrEditSubsiteForm(Request $request)
     {
+        $subsiteToEdit = $request->query('subsiteId');
+
+        $subsiteData = new subsite();
+        if($subsiteToEdit)
+        {
+            $subsiteData = subsite::select('name', 'visible', 'order')
+            ->firstWhere('id', $subsiteToEdit);
+        }
+
         $orderList = subsite::count('order');
         $orderList++;
 
         return view('admin.control.addSubsite',[
             'orderList' => $orderList,
+            'subsiteData' =>  $subsiteData
         ]);
     }
 

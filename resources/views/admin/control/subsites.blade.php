@@ -11,15 +11,14 @@
                 <tr>
                     <th>Lp</th>
                     <th>Nazwa</th>
-                    <th>Widoczność</th>
-                    <th>Kolejność</th>
+                    <th>Widoczna</th>
+                    <th></th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach($subsites ?? [] as $subsite)
                     <tr>
-                        <td>{{ $loop->iteration }}</td>
-
+                        <td>{{ $subsite->order }}</td>
                         <td>{{ $subsite->name }}</td>
                         <td>
                             @if($subsite->visible)
@@ -28,7 +27,13 @@
                                 <i class="fas fa-window-close"></i>
                             @endif
                         </td>
-                        <td>{{ $subsite->order }}</td>
+                        <td>
+                            <a href="{{ route('admin.addOrEditSubsiteForm',
+                            ['subsiteId' => $subsite->id]
+                                )}}" class="black">
+                                <i class="fas fa-edit"></i>
+                            </a>
+                        </td>
                     </tr>
                 @endforeach
                 </tbody>
@@ -37,6 +42,6 @@
     </div>
 </div>
 
-<a href="{{ route('admin.addSubsiteForm') }}" class="btn btn-primary mb-1">Dodaj podstronę</a>
+<a href="{{ route('admin.addOrEditSubsiteForm') }}" class="btn btn-primary mb-1">Dodaj podstronę</a>
 
 @endsection

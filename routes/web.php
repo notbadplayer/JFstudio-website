@@ -32,12 +32,14 @@ Route::group([
     Route::get('subsites', [AdminController::class, 'subsites'])
     ->name('subsites');
 
-    Route::get('addSubsite', [AdminController::class, 'addSubsiteForm'])
-    ->name('addSubsiteForm');
+    Route::get('addSubsite', [AdminController::class, 'addOrEditSubsiteForm'])
+    ->name('addOrEditSubsiteForm');
 
     Route::post('addSubsite', [AdminController::class, 'addSubsite'])
     ->name('addSubsite');
 
+    Route::get('editSubsite', [AdminController::class, 'editSubsite'])
+    ->name('editSubsite');
 
 });
 
