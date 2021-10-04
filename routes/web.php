@@ -38,10 +38,6 @@ Route::group([
     Route::post('addSubsite', [AdminController::class, 'addSubsite'])
     ->name('addSubsite');
 
-    Route::post('subsites/rate', [AdminController::class, 'subsitesChangeName'])
-    ->name('subsites.changeName');
-
-
 
 });
 

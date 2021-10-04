@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\addSubsite;
-use App\Http\Requests\ChangeSubsiteName;
-use App\Models\article;
 use App\Models\subsite;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -38,14 +35,31 @@ class AdminController extends Controller
     public function addSubsite(addSubsite $request)
     {
         $data = $request->validated();
-        dd($data);
+
+        $orderChangeIfExist = subsite::where('order', $data['subsiteOrder'])
+        ->first();
+
+        if($orderChangeIfExist)
+        {
+            $orderList = subsite::count('order');
+            $orderList++;
+            $previousOrderItem = $orderChangeIfExist;
+            $previousOrderItem->order = $orderList;
+            $previousOrderItem->save();
+        }
+
+        subsite::create([
+            'name' => $data['subsiteName'],
+            'visible' => (bool) $data['subsiteVisibility'],
+            'order' => (int) $data['subsiteOrder'],
+        ]);
+
+        return redirect()
+        ->route('admin.subsites')
+        ->with('success', 'Dodano podstronę');
     }
 
-    public function subsitesChangeName(ChangeSubsiteName $request)
-    {
-      $data = $request->validated();
-      dd($data);
-    }
+
 
 
 

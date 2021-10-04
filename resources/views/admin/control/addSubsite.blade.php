@@ -20,13 +20,13 @@
                     <div class="form-row mb-4">
                         <label for="subsiteVisible" class="form-label">Widoczność strony:</label>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="subsiteVisibility" id="subsiteVisible" value="visible" checked>
+                            <input class="form-check-input" type="radio" name="subsiteVisibility" id="subsiteVisible" value=1 checked>
                             <label class="form-check-label" for="subsiteVisible">
                               Widoczna
                             </label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="subsiteVisibility" id="subsiteInisible" value="invisible">
+                            <input class="form-check-input" type="radio" name="subsiteVisibility" id="subsiteInisible" value=0>
                             <label class="form-check-label" for="subsiteInisible">
                               Ukryta
                             </label>
@@ -35,7 +35,7 @@
 
                     <div class="form-row mb-5">
                         <label for="subsiteOrder" class="form-label">Kolejność wyświetlania:</label>
-                        <select class="form-select form-select-md mb-1" id="subsiteOrder" aria-describedby="subsiteOrder">
+                        <select class="form-select form-select-md mb-1" id="subsiteOrder" name="subsiteOrder" aria-describedby="subsiteOrder">
 
                             @for($i = 1; $i <= $orderList; $i++)
                                 <option value="{{ $i }}" @if($i == $orderList) selected @endif>{{ $i }}</option>

@@ -18,6 +18,10 @@ class subsite extends Model
         'password' => null,
     ];
 
+    protected $fillable = [
+        'name', 'visible', 'order'
+    ];
+
     public function scopeVisible(Builder $query): Builder
     {
         return $query->where('visible', true);

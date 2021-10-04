@@ -24,7 +24,9 @@ class addSubsite extends FormRequest
     public function rules()
     {
         return [
-            'subsiteName' => 'required|min:3'
+            'subsiteName' => 'required|min:3',
+            'subsiteVisibility' => 'required',
+            'subsiteOrder' => 'required|int',
         ];
     }
 }
