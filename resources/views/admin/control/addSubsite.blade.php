@@ -1,6 +1,16 @@
 @extends('admin.main')
 @section('content')
 
+    @if ($errors->any())
+        <div class="alert alert-danger d-flex align-items-center" role="alert">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="card mt-3">
         <div class="card">
             <div class="card-header"><i class="fas fa-table me-2"></i>Dodawanie nowej podstrony</div>
@@ -12,7 +22,7 @@
                         <div class="col-auto">
                             <div class="mb-3">
                                 <label for="addSubsiteName" class="form-label">Nazwa podstrony: </label>
-                                <input type="text" class="form-control" name="subsiteName" id="addSubsiteName" aria-describedby="subsiteName">
+                                <input type="text" class="form-control @error('subsiteName')validation-error @enderror" name="subsiteName" id="addSubsiteName" aria-describedby="subsiteName">
                                 <div id="subsiteName" class="form-text">Podaj nazwę nowej podstrony.</div>
                               </div>
                         </div>

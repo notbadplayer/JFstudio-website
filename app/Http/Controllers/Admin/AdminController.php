@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function subsites()
     {
         return view('admin.control.subsites', [
-            'subsites' => subsite::all(),
+            'subsites' => subsite::all()->sortBy('order'),
         ]);
     }
 

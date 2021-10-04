@@ -29,4 +29,14 @@ class addSubsite extends FormRequest
             'subsiteOrder' => 'required|int',
         ];
     }
+
+    public function messages()
+    {
+        return [
+                'subsiteName.required' => 'Pole "nazwa" nie może być puste',
+                'subsiteName.min' =>' Nazwa musi zawierać minimum :min znaków'
+        ];
+    }
+
 }
+

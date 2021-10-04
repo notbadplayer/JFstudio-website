@@ -17644,3 +17644,7 @@ body {
 #layoutAuthentication {
   margin-top: 70px;
 }
+
+.validation-error {
+  border: 2px solid red;
+}
