@@ -30,27 +30,27 @@ class AdminController extends Controller
         $subsiteData = new subsite();
         if($subsiteToEdit)
         {
-            $subsiteData = subsite::select('name', 'visible', 'order')
+            $subsiteData = subsite::select('name', 'visible', 'order', 'id')
             ->firstWhere('id', $subsiteToEdit);
         }
 
         $orderList = subsite::count('order');
         $orderList++;
 
-        return view('admin.control.addSubsite',[
+        return view('admin.control.addOrEditSubsite',[
             'orderList' => $orderList,
             'subsiteData' =>  $subsiteData
         ]);
     }
 
-    public function addSubsite(addSubsite $request)
+    public function saveSubsite(addSubsite $request)
     {
         $data = $request->validated();
 
         $orderChangeIfExist = subsite::where('order', $data['subsiteOrder'])
         ->first();
 
-        if($orderChangeIfExist)
+        if($orderChangeIfExist) //zmiana kolejności podstrony, jeśli kolejność którą wybraliśmy jest zajęta
         {
             $orderList = subsite::count('order');
             $orderList++;
@@ -59,19 +59,38 @@ class AdminController extends Controller
             $previousOrderItem->save();
         }
 
-        subsite::create([
-            'name' => $data['subsiteName'],
-            'visible' => (bool) $data['subsiteVisibility'],
-            'order' => (int) $data['subsiteOrder'],
-        ]);
+        if($data['subsiteId'] == 'add') //dane z ukrytego pola formularza, decydujemy czy dodajemy wpis czy edytujemy
+        {
+            subsite::create([
+                'name' => $data['subsiteName'],
+                'visible' => (bool) $data['subsiteVisibility'],
+                'order' => (int) $data['subsiteOrder'],
+            ]);
+
+            $message = 'Dodano podstronę';
+        }
+
+        else
+        {
+            subsite::find($data['subsiteId'])
+            ->update([
+                'name' => $data['subsiteName'],
+                'visible' => (bool) $data['subsiteVisibility'],
+                'order' => (int) $data['subsiteOrder'],
+            ]);
+
+            $message = 'Aktualizowano';
+        }
 
         return redirect()
         ->route('admin.subsites')
-        ->with('success', 'Dodano podstronę');
+        ->with('success', $message);
     }
 
-
-
+    public function deleteSubsite()
+    {
+        dd('delete');
+    }
 
 
 }

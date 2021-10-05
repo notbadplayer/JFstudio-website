@@ -14,11 +14,24 @@
 
     <div class="card mt-3">
         <div class="card">
-            <div class="card-header"><i class="fas fa-table me-2"></i>{{ $subsiteData->name ? 'Edycja podstrony' : 'Dodawanie nowej podstrony'}}</div>
+            <div class="card-header">
+                <i class="fas fa-table me-2"></i>{{ $subsiteData->name ? 'Edycja podstrony' : 'Dodawanie nowej podstrony'}}
+                    @if($subsiteData->id)
+                    <span class="float-end">
+                        <form class="m-0" method="post" action="{{ route('admin.deleteSubsite') }}">
+                            @csrf
+                            <input type="hidden" name="subsiteId" value="{{ $subsiteData->id }}">
+                            <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> <span class="d-none d-sm-inline">Usuń podstronę<span></button>
+                        </form>
+                    </span>
+                    @endif
+            </div>
             <div class="card-body">
 
-                <form class="m-0" method="post" action="{{ route('admin.addSubsite') }}">
+                <form class="m-0" method="post" action="{{ route('admin.saveSubsite') }}">
                     @csrf
+                    <input type="hidden" name="subsiteId" value="{{ $subsiteData->id ? $subsiteData->id : 'add'}}">
+
                     <div class="form-row">
                         <div class="col-auto">
                             <div class="mb-3">
@@ -74,8 +87,6 @@
                         </div>
                     </div>
                 </form>
-
-
             </div>
         </div>
     </div>
