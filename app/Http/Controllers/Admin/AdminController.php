@@ -87,9 +87,12 @@ class AdminController extends Controller
         ->with('success', $message);
     }
 
-    public function deleteSubsite()
+    public function deleteSubsite(Request $request)
     {
-        dd('delete');
+       subsite::find($request->subsiteId)->delete();
+       return redirect()
+        ->route('admin.subsites')
+        ->with('warning', 'Usunięto podstronę.');
     }
 
 

@@ -18,7 +18,7 @@
                 <i class="fas fa-table me-2"></i>{{ $subsiteData->name ? 'Edycja podstrony' : 'Dodawanie nowej podstrony'}}
                     @if($subsiteData->id)
                     <span class="float-end">
-                        <form class="m-0" method="post" action="{{ route('admin.deleteSubsite') }}">
+                        <form class="m-0" method="post" action="{{ route('admin.deleteSubsite') }}" onsubmit='return confirm("Czy na pewno chcesz usunąć?")'>
                             @csrf
                             <input type="hidden" name="subsiteId" value="{{ $subsiteData->id }}">
                             <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> <span class="d-none d-sm-inline">Usuń podstronę<span></button>
@@ -38,7 +38,7 @@
                                 <label for="addSubsiteName" class="form-label">Nazwa podstrony: </label>
                                 <input type="text" class="form-control @error('subsiteName')validation-error @enderror"
                                 name="subsiteName" id="addSubsiteName" aria-describedby="subsiteName"
-                                value="{{ $subsiteData->name ?? '' }}">
+                                value="{{ old('subsiteName', $subsiteData->name ?? '' )}}">
                                 <div id="subsiteName" class="form-text">Podaj nazwę nowej podstrony.</div>
                               </div>
                         </div>
