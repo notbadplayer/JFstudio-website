@@ -41,6 +41,13 @@ Route::group([
     Route::post('deleteSubsite', [AdminController::class, 'deleteSubsite'])
     ->name('deleteSubsite');
 
+    Route::get('articles', [AdminController::class, 'articles'])
+    ->name('articles');
+
+    Route::get('addOrEditArticle', [AdminController::class, 'addOrEditArticleForm'])
+    ->name('addOrEditArticleForm');
+
+
 
 
 });

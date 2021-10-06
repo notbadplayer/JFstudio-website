@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\addSubsite;
+use App\Models\article;
 use App\Models\subsite;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -93,6 +95,49 @@ class AdminController extends Controller
        return redirect()
         ->route('admin.subsites')
         ->with('warning', 'Usunięto podstronę.');
+    }
+
+
+    public function articles(Request $request)
+    {
+
+        $articles = article::all();
+
+        return view('admin.control.articles', [
+            'articles' => $articles,
+        ]);
+
+    }
+
+
+    public function addOrEditArticleForm(Request $request)
+    {
+        // $subsiteToEdit = $request->query('subsiteId');
+
+        // $subsiteData = new subsite();
+        // if($subsiteToEdit)
+        // {
+        //     $subsiteData = subsite::select('name', 'visible', 'order', 'id')
+        //     ->firstWhere('id', $subsiteToEdit);
+        // }
+
+        // $orderList = subsite::count('order');
+        // $orderList++;
+
+        $subsites = subsite::select('name', 'id', 'order')
+            ->orderBy('order', 'asc')
+            ->get();
+
+        $articleData= new article();
+
+        $data = Carbon::today()->format('Y-m-d');
+
+        return view('admin.control.addOrEditArticle',[
+            // 'orderList' => $orderList,
+             'articleData' =>  $articleData,
+             'subsites' => $subsites,
+             'data' => $data,
+        ]);
     }
 
 

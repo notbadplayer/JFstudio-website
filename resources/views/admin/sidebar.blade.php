@@ -1,4 +1,4 @@
-<a class="nav-link" href="">
+<a class="nav-link" href="{{ route('admin.mainpage') }}">
     <div class="sb-nav-link-icon"><i class="fas fa-home"></i></div>
     Panel
 </a>
@@ -10,7 +10,7 @@
 </a>
 
 <div class="sb-sidenav-menu-heading">Treści</div>
-<a class="nav-link" href="">
+<a class="nav-link" href="{{ route('admin.articles') }}">
     <div class="sb-nav-link-icon"><i class="fas fa-book"></i></div>
     Zarządzaj wpisami
 </a>

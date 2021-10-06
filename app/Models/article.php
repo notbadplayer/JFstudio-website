@@ -20,4 +20,9 @@ class article extends Model
     {
         return $query->where('published', true);
     }
+
+    public function subsite()
+    {
+        return $this->belongsTo(subsite::class);
+    }
 }
