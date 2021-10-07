@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\addArticle;
 use App\Http\Requests\addSubsite;
 use App\Models\article;
 use App\Models\subsite;
@@ -112,25 +113,24 @@ class AdminController extends Controller
 
     public function addOrEditArticleForm(Request $request)
     {
-        // $subsiteToEdit = $request->query('subsiteId');
+        $articleToEdit = $request->query('articleId');
 
-        // $subsiteData = new subsite();
-        // if($subsiteToEdit)
-        // {
-        //     $subsiteData = subsite::select('name', 'visible', 'order', 'id')
-        //     ->firstWhere('id', $subsiteToEdit);
-        // }
+        $articleData = new article();
+        if($articleToEdit)
+        {
+            $articleData = article::with('subsite')
+            ->firstWhere('id', $articleToEdit);
+        }
 
         // $orderList = subsite::count('order');
         // $orderList++;
 
-        $subsites = subsite::select('name', 'id', 'order')
+        $subsites = subsite::select('name', 'id', 'order') //to tylko do input selecta, tam gdzie przypisujemy artykuł do podstrony
             ->orderBy('order', 'asc')
             ->get();
 
-        $articleData= new article();
 
-        $data = Carbon::today()->format('Y-m-d');
+        $data = Carbon::today()->format('Y-m-d'); //domyślna data publikacji to dzisiaj
 
         return view('admin.control.addOrEditArticle',[
             // 'orderList' => $orderList,
@@ -138,6 +138,42 @@ class AdminController extends Controller
              'subsites' => $subsites,
              'data' => $data,
         ]);
+    }
+
+    public function saveArticle(addArticle $request)
+    {
+        $data = $request->validated();
+
+        if($data['articleId'] == 'add')
+        {
+            article::create([
+                'title' => $data['articleTitle'],
+                'content' => $data['articleContent'],
+                'published' => (bool) $data['articleVisibility'],
+                'publishDate' => $data['articleDateFrom'],
+                'subsite_id' => $data['articleSubsite'],
+            ]);
+
+            $message = 'Dodano wpis';
+        }
+
+        else
+        {
+            article::find($data['articleId'])
+            ->update([
+                'title' => $data['articleTitle'],
+                'content' => $data['articleContent'],
+                'published' => (bool) $data['articleVisibility'],
+                'publishDate' => $data['articleDateFrom'],
+                'subsite_id' => $data['articleSubsite'],
+            ]);
+
+            $message = 'Aktualizowano wpis';
+        }
+
+        return redirect()
+        ->route('admin.articles')
+        ->with('success', $message);
     }
 
 

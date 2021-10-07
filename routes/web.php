@@ -47,6 +47,9 @@ Route::group([
     Route::get('addOrEditArticle', [AdminController::class, 'addOrEditArticleForm'])
     ->name('addOrEditArticleForm');
 
+    Route::post('saveArticle', [AdminController::class, 'saveArticle'])
+    ->name('saveArticle');
+
 
 
 

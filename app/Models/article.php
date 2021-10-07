@@ -13,7 +13,11 @@ class article extends Model
 
     protected $attributes = [
         'published' => true,
-        'publish_date' => null,
+        'publishDate' => null,
+    ];
+
+    protected $fillable = [
+        'title', 'content', 'published', 'publishDate', 'subsite_id'
     ];
 
     public function scopePublished(Builder $query): Builder

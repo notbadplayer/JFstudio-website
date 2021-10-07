@@ -17,6 +17,7 @@
                 </tr>
                 </thead>
                 <tbody>
+
                 @foreach($articles ?? [] as $article)
                     <tr>
                         <td>{{ $article->title }}</td>
@@ -31,7 +32,7 @@
                         <td>{{ $article->publishDate }}</td>
                         <td>
                             <a href="{{ route('admin.addOrEditArticleForm',
-                            ['subsiteId' => $article->id]
+                            ['articleId' => $article->id]
                                 )}}" class="black">
                                 <i class="fas fa-edit"></i>
                             </a>
