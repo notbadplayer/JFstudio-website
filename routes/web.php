@@ -50,6 +50,9 @@ Route::group([
     Route::post('saveArticle', [AdminController::class, 'saveArticle'])
     ->name('saveArticle');
 
+    Route::post('deleteArticle', [AdminController::class, 'deleteArticle'])
+    ->name('deleteArticle');
+
 
 
 

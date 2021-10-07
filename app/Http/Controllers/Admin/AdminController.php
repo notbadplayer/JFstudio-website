@@ -176,5 +176,14 @@ class AdminController extends Controller
         ->with('success', $message);
     }
 
+    public function deleteArticle(Request $request)
+    {
+       article::find($request->articleId)->delete();
+       return redirect()
+        ->route('admin.articles')
+        ->with('warning', 'Usunięto wpis.');
+    }
+
+
 
 }

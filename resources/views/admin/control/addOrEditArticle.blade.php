@@ -17,9 +17,9 @@
                 <i class="fas fa-table me-2"></i>{{ $articleData->title ? 'Edycja wpisu' : 'Dodawanie nowego wpisu'}}
                     @if($articleData->id)
                     <span class="float-end">
-                        <form class="m-0" method="post" action="{{ route('admin.deleteSubsite') }}" onsubmit='return confirm("Czy na pewno chcesz usunąć?")'>
+                        <form class="m-0" method="post" action="{{ route('admin.deleteArticle') }}" onsubmit='return confirm("Czy na pewno chcesz usunąć?")'>
                             @csrf
-                            <input type="hidden" name="subsiteId" value="{{ $articleData->id }}">
+                            <input type="hidden" name="articleId" value="{{ $articleData->id }}">
                             <button type="submit" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i> <span class="d-none d-sm-inline">Usuń wpis<span></button>
                         </form>
                     </span>
