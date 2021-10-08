@@ -103,4 +103,11 @@
             </div>
         </div>
     </div>
+
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+    <script>
+    CKEDITOR.replace( 'articleContent');
+    </script>
+
+
 @endsection

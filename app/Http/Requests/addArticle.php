@@ -26,7 +26,7 @@ class addArticle extends FormRequest
         return [
             'articleId' => 'required',
             'articleTitle' => 'required|max:200',
-            'articleContent' => 'required|max:200000',
+            'articleContent' => 'required',
             'articleVisibility' => 'required',
             'articleDateFrom' => 'required|date|after:yesterday',
             'articleSubsite' => 'required'
@@ -37,7 +37,6 @@ class addArticle extends FormRequest
     {
         return [
             'articleTitle.required' => 'Pole "tytuł" nie może być puste.',
-            'articleTitle.max' => 'Tytuł nie może zawierać więcej niż :max znaków.',
             'articleContent.required' => 'Pole z treścią jest wymagane.',
             'articleContent.max' => 'Treść nie może zawierać więcej niż 200 000 znaków.',
             'articleDateFrom.date' => 'Nieprawidłowa data.',

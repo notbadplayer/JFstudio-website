@@ -54,8 +54,6 @@ Route::group([
     ->name('deleteArticle');
 
 
-
-
 });
 
 Auth::routes();
