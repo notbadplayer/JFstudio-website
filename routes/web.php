@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,5 +58,7 @@ Route::group([
 });
 
 Auth::routes();
+
+Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
