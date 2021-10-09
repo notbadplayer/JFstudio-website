@@ -15,6 +15,12 @@
     Zarządzaj wpisami
 </a>
 
+<div class="sb-sidenav-menu-heading">Pliki</div>
+<a class="nav-link" href="{{ route('admin.files') }}">
+    <div class="sb-nav-link-icon"><i class="far fa-file"></i></div>
+    Lista plików
+</a>
+
 
 <div class="sb-sidenav-menu-heading">Użytkownicy</div>
 <a class="nav-link" href="">

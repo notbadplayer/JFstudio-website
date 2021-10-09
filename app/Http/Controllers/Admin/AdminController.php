@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
@@ -10,6 +11,7 @@ use App\Models\article;
 use App\Models\subsite;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -31,16 +33,15 @@ class AdminController extends Controller
         $subsiteToEdit = $request->query('subsiteId');
 
         $subsiteData = new subsite();
-        if($subsiteToEdit)
-        {
+        if ($subsiteToEdit) {
             $subsiteData = subsite::select('name', 'visible', 'order', 'id')
-            ->firstWhere('id', $subsiteToEdit);
+                ->firstWhere('id', $subsiteToEdit);
         }
 
         $orderList = subsite::count('order');
         $orderList++;
 
-        return view('admin.control.addOrEditSubsite',[
+        return view('admin.control.addOrEditSubsite', [
             'orderList' => $orderList,
             'subsiteData' =>  $subsiteData
         ]);
@@ -51,9 +52,9 @@ class AdminController extends Controller
         $data = $request->validated();
 
         $orderChangeIfExist = subsite::where('order', $data['subsiteOrder'])
-        ->first();
+            ->first();
 
-        if($orderChangeIfExist) //zmiana kolejności podstrony, jeśli kolejność którą wybraliśmy jest zajęta
+        if ($orderChangeIfExist) //zmiana kolejności podstrony, jeśli kolejność którą wybraliśmy jest zajęta
         {
             $orderList = subsite::count('order');
             $orderList++;
@@ -62,7 +63,7 @@ class AdminController extends Controller
             $previousOrderItem->save();
         }
 
-        if($data['subsiteId'] == 'add') //dane z ukrytego pola formularza, decydujemy czy dodajemy wpis czy edytujemy
+        if ($data['subsiteId'] == 'add') //dane z ukrytego pola formularza, decydujemy czy dodajemy wpis czy edytujemy
         {
             subsite::create([
                 'name' => $data['subsiteName'],
@@ -71,31 +72,28 @@ class AdminController extends Controller
             ]);
 
             $message = 'Dodano podstronę';
-        }
-
-        else
-        {
+        } else {
             subsite::find($data['subsiteId'])
-            ->update([
-                'name' => $data['subsiteName'],
-                'visible' => (bool) $data['subsiteVisibility'],
-                'order' => (int) $data['subsiteOrder'],
-            ]);
+                ->update([
+                    'name' => $data['subsiteName'],
+                    'visible' => (bool) $data['subsiteVisibility'],
+                    'order' => (int) $data['subsiteOrder'],
+                ]);
 
             $message = 'Aktualizowano';
         }
 
         return redirect()
-        ->route('admin.subsites')
-        ->with('success', $message);
+            ->route('admin.subsites')
+            ->with('success', $message);
     }
 
     public function deleteSubsite(Request $request)
     {
-       subsite::find($request->subsiteId)->delete();
-       return redirect()
-        ->route('admin.subsites')
-        ->with('warning', 'Usunięto podstronę.');
+        subsite::find($request->subsiteId)->delete();
+        return redirect()
+            ->route('admin.subsites')
+            ->with('warning', 'Usunięto podstronę.');
     }
 
 
@@ -107,7 +105,6 @@ class AdminController extends Controller
         return view('admin.control.articles', [
             'articles' => $articles,
         ]);
-
     }
 
 
@@ -116,10 +113,9 @@ class AdminController extends Controller
         $articleToEdit = $request->query('articleId');
 
         $articleData = new article();
-        if($articleToEdit)
-        {
+        if ($articleToEdit) {
             $articleData = article::with('subsite')
-            ->firstWhere('id', $articleToEdit);
+                ->firstWhere('id', $articleToEdit);
         }
 
         // $orderList = subsite::count('order');
@@ -132,11 +128,11 @@ class AdminController extends Controller
 
         $data = Carbon::today()->format('Y-m-d'); //domyślna data publikacji to dzisiaj
 
-        return view('admin.control.addOrEditArticle',[
+        return view('admin.control.addOrEditArticle', [
             // 'orderList' => $orderList,
-             'articleData' =>  $articleData,
-             'subsites' => $subsites,
-             'data' => $data,
+            'articleData' =>  $articleData,
+            'subsites' => $subsites,
+            'data' => $data,
         ]);
     }
 
@@ -144,8 +140,7 @@ class AdminController extends Controller
     {
         $data = $request->validated();
 
-        if($data['articleId'] == 'add')
-        {
+        if ($data['articleId'] == 'add') {
             article::create([
                 'title' => $data['articleTitle'],
                 'content' => $data['articleContent'],
@@ -155,35 +150,46 @@ class AdminController extends Controller
             ]);
 
             $message = 'Dodano wpis';
-        }
-
-        else
-        {
+        } else {
             article::find($data['articleId'])
-            ->update([
-                'title' => $data['articleTitle'],
-                'content' => $data['articleContent'],
-                'published' => (bool) $data['articleVisibility'],
-                'publishDate' => $data['articleDateFrom'],
-                'subsite_id' => $data['articleSubsite'],
-            ]);
+                ->update([
+                    'title' => $data['articleTitle'],
+                    'content' => $data['articleContent'],
+                    'published' => (bool) $data['articleVisibility'],
+                    'publishDate' => $data['articleDateFrom'],
+                    'subsite_id' => $data['articleSubsite'],
+                ]);
 
             $message = 'Aktualizowano wpis';
         }
 
         return redirect()
-        ->route('admin.articles')
-        ->with('success', $message);
+            ->route('admin.articles')
+            ->with('success', $message);
     }
 
     public function deleteArticle(Request $request)
     {
-       article::find($request->articleId)->delete();
-       return redirect()
-        ->route('admin.articles')
-        ->with('warning', 'Usunięto wpis.');
+        article::find($request->articleId)->delete();
+        return redirect()
+            ->route('admin.articles')
+            ->with('warning', 'Usunięto wpis.');
+    }
+
+    public function fileList()
+    {
+        return view('admin.control.files', [
+            'files' => Storage::listContents(),
+        ]);
     }
 
 
+    public function deleteFile(Request $request)
+    {
+        Storage::delete($request->fileName);
 
+        return redirect()
+            ->route('admin.files')
+            ->with('warning', 'Usunięto plik.');
+    }
 }

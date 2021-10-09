@@ -54,6 +54,12 @@ Route::group([
     Route::post('deleteArticle', [AdminController::class, 'deleteArticle'])
     ->name('deleteArticle');
 
+    Route::get('files', [AdminController::class, 'fileList'])
+    ->name('files');
+
+    Route::post('deleteFile', [AdminController::class, 'deleteFile'])
+    ->name('deleteFile');
+
 
 });
 
