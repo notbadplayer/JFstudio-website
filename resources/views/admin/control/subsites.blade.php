@@ -31,7 +31,7 @@
                             <a href="{{ route('admin.addOrEditSubsiteForm',
                             ['subsiteId' => $subsite->id]
                                 )}}" class="black">
-                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-edit"></i><span class="d-none d-sm-inline ms-1">Edytuj<span>
                             </a>
                         </td>
                     </tr>

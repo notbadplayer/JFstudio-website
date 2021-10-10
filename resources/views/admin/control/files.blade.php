@@ -11,8 +11,8 @@
                 <tr>
                     <th>Lp</th>
                     <th>Nazwa</th>
-                    <th>Adres do pliku</th>
-                    <th>Rozmiar (KB)</th>
+                    <th class="d-none d-md-table-cell">Adres do pliku</th>
+                    <th class="d-none d-md-table-cell">Rozmiar (KB)</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -22,8 +22,8 @@
                     <tr>
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $file['basename']}}</td>
-                        <td><a target="_blank" rel="noopener noreferrer" href="{{ asset('files/'.$file['basename']);}}">{{ asset('files/'.$file['basename']);}}</a></td>
-                        <td>{{ $file['size'] }}</td>
+                        <td class="d-none d-md-table-cell"><a target="_blank" rel="noopener noreferrer" href="{{ asset('files/'.$file['basename']);}}">{{ asset('files/'.$file['basename']);}}</a></td>
+                        <td class="d-none d-md-table-cell">{{ $file['size'] }}</td>
                         <td>
                             <form class="m-0" method="post" action="{{ route('admin.deleteFile') }}" onsubmit='return confirm("Czy na pewno chcesz usunąć?")'>
                                 @csrf

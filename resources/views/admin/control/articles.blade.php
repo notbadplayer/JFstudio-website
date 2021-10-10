@@ -11,8 +11,8 @@
                 <tr>
                     <th>Tytuł</th>
                     <th>podstrona</th>
-                    <th>Opublikowany</th>
-                    <th>Widoczny od:</th>
+                    <th class="d-none d-sm-table-cell">Opublikowany</th>
+                    <th class="d-none d-sm-table-cell">Widoczny od:</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -22,19 +22,19 @@
                     <tr>
                         <td>{{ $article->title }}</td>
                         <td>{{ $article->subsite->name }}</td>
-                        <td>
+                        <td class="d-none d-sm-table-cell">
                             @if($article->published)
                                 <i class="fas fa-check-circle"></i>
                             @else
                                 <i class="fas fa-window-close"></i>
                             @endif
                         </td>
-                        <td>{{ $article->publishDate }}</td>
+                        <td class="d-none d-sm-table-cell">{{ $article->publishDate }}</td>
                         <td>
                             <a href="{{ route('admin.addOrEditArticleForm',
                             ['articleId' => $article->id]
                                 )}}" class="black">
-                                <i class="fas fa-edit"></i>
+                                <i class="fas fa-edit"></i><span class="d-none d-md-inline ms-1">Edytuj<span>
                             </a>
                         </td>
                     </tr>

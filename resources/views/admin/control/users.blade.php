@@ -12,7 +12,7 @@
                     <th>Lp</th>
                     <th>Nazwa</th>
                     <th>e-mail</th>
-                    <th>data rejestracji</th>
+                    <th class="d-none d-sm-table-cell">data rejestracji</th>
                     <th></th>
                 </tr>
                 </thead>
@@ -23,12 +23,12 @@
                         <td>{{ $loop->iteration }}</td>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
-                        <td>{{ $user->created_at }}</td>
+                        <td class="d-none d-sm-table-cell">{{ $user->created_at }}</td>
                         <td>
                             <a href="{{ route('admin.changePassword',
                             ['userId' => $user->id]
                                 )}}" class="black">
-                                <i class="fas fa-key"></i>
+                                <i class="fas fa-key"></i><span class="d-none d-sm-inline ms-1">Zmień hasło<span>
                             </a>
                         </td>
                     </tr>
