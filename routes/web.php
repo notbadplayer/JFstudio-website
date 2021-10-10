@@ -60,6 +60,11 @@ Route::group([
     Route::post('deleteFile', [AdminController::class, 'deleteFile'])
     ->name('deleteFile');
 
+    Route::get('users', [AdminController::class, 'userList'])
+    ->name('users');
+
+    Route::match(['get', 'post'], 'changePassword', [AdminController::class, 'changePassword'])
+    ->name('changePassword');
 
 });
 

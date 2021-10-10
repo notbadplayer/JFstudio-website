@@ -9,9 +9,12 @@ use App\Http\Requests\addArticle;
 use App\Http\Requests\addSubsite;
 use App\Models\article;
 use App\Models\subsite;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rules;
 
 class AdminController extends Controller
 {
@@ -97,7 +100,7 @@ class AdminController extends Controller
     }
 
 
-    public function articles(Request $request)
+    public function articles()
     {
 
         $articles = article::all();
@@ -191,5 +194,41 @@ class AdminController extends Controller
         return redirect()
             ->route('admin.files')
             ->with('warning', 'Usunięto plik.');
+    }
+
+    public function userList(User $user)
+    {
+
+        return view('admin.control.users', [
+            'users' => $user->all(),
+        ]);
+    }
+
+    public function changePassword(Request $request)
+    {
+        //pierwsze wejście do funkcji, zwrócenie widoku formularza zmiany hasła
+        if ($request->isMethod('get')) {
+            $userId = $request->query('userId');
+
+            return view('admin.control.changePassword', [
+                'userId' => $userId,
+            ]);
+        }
+
+        //drugie wejście do funkcji, zwrotka z formularza wysłana postem, akcja zmiany hasła
+        else{
+            $request->validate([
+                'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            ]);
+
+            $user = User::where('id', $request->userId)->first();
+            $user->password = Hash::make($request->password);
+            $user->save();
+
+            return redirect()
+            ->route('admin.mainpage')
+            ->with('success', 'Zmieniono hasło');
+        }
+
     }
 }

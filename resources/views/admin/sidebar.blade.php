@@ -23,7 +23,7 @@
 
 
 <div class="sb-sidenav-menu-heading">Użytkownicy</div>
-<a class="nav-link" href="">
+<a class="nav-link" href="{{ route('admin.users') }}">
     <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
     Lista użytkowników
 </a>
