@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\addArticle;
 use App\Http\Requests\addSubsite;
+use App\Http\Requests\addUser;
 use App\Models\article;
 use App\Models\subsite;
 use App\Models\User;
@@ -202,6 +203,27 @@ class AdminController extends Controller
         return view('admin.control.users', [
             'users' => $user->all(),
         ]);
+    }
+
+    public function addUserForm()
+    {
+        return view('admin.control.addUser');
+    }
+
+    public function saveUser(addUser $request)
+    {
+        $data = $request->validated();
+
+        User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
+
+        return redirect()
+            ->route('admin.users')
+            ->with('success', 'Dodano nowego użytkownika');
+
     }
 
     public function changePassword(Request $request)

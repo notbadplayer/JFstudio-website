@@ -39,6 +39,6 @@
     </div>
 </div>
 
-<a href="{{ route('admin.addOrEditArticleForm') }}" class="btn btn-primary mb-1">Dodaj artykuł</a>
+<a href="{{ route('admin.addUser') }}" class="btn btn-primary mb-1">Dodaj użytkownika</a>
 
 @endsection

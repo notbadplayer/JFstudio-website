@@ -22,9 +22,9 @@
                         <td>{{ $subsite->name }}</td>
                         <td>
                             @if($subsite->visible)
-                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-check-circle green"></i>
                             @else
-                                <i class="fas fa-window-close"></i>
+                                <i class="fas fa-window-close red"></i>
                             @endif
                         </td>
                         <td>

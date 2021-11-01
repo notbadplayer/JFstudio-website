@@ -63,12 +63,21 @@ Route::group([
     Route::get('users', [AdminController::class, 'userList'])
     ->name('users');
 
+    Route::get('addUsers', [AdminController::class, 'addUserForm'])
+    ->name('addUser');
+
+    Route::post('saveUser', [AdminController::class, 'saveUser'])
+    ->name('saveUser');
+
     Route::match(['get', 'post'], 'changePassword', [AdminController::class, 'changePassword'])
     ->name('changePassword');
 
 });
 
-Auth::routes();
+Auth::routes([
+    'register' => false,
+    'reset' => false,
+]);
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
 

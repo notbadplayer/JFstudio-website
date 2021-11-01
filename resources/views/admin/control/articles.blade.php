@@ -24,9 +24,9 @@
                         <td>{{ $article->subsite->name }}</td>
                         <td class="d-none d-sm-table-cell">
                             @if($article->published)
-                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-check-circle green"></i>
                             @else
-                                <i class="fas fa-window-close"></i>
+                                <i class="fas fa-window-close red"></i>
                             @endif
                         </td>
                         <td class="d-none d-sm-table-cell">{{ $article->publishDate }}</td>
