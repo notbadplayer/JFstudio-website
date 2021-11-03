@@ -72,6 +72,12 @@ Route::group([
     Route::match(['get', 'post'], 'changePassword', [AdminController::class, 'changePassword'])
     ->name('changePassword');
 
+    Route::get('contact', [AdminController::class, 'contact'])
+    ->name('contactData');
+
+    Route::post('contact', [AdminController::class, 'contact'])
+    ->name('saveContactData');
+
 });
 
 Auth::routes([

@@ -13,6 +13,7 @@ use App\Models\subsite;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rules;
@@ -250,6 +251,40 @@ class AdminController extends Controller
             return redirect()
             ->route('admin.mainpage')
             ->with('success', 'Zmieniono hasło');
+        }
+
+    }
+
+    public function contact(Request $request)
+    {
+        if($request->ismethod('get'))
+        {
+            $contactData = DB::table('contactData')->first();
+
+            return view('admin.control.contact', [
+                'contactData' => $contactData
+            ]);
+        }
+
+        else
+        {
+            $request->validate([
+                'adress' => ['required', 'max:150'],
+                'email' => ['required', 'max:150', 'email'],
+                'phone' => ['required', 'max:20'],
+            ]);
+
+            DB::table('contactData')
+            ->take(1)
+            ->update([
+                'adress' => $request->adress,
+                'email' => $request->email,
+                'phone' => $request->phone
+            ]);
+
+            return redirect()
+            ->route('admin.mainpage')
+            ->with('success', 'Aktualizowano dane kontaktowe');
         }
 
     }

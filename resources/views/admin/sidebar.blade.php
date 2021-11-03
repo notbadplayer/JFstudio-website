@@ -34,6 +34,12 @@
     Wyświetl statystyki
 </a>
 
+<div class="sb-sidenav-menu-heading">Kontakt</div>
+<a class="nav-link"  href="{{ route('admin.contactData') }}">
+    <div class="sb-nav-link-icon"><i class="far fa-address-card"></i></div>
+    Dane kontaktowe
+</a>
+
 <div class="sb-sidenav-menu-heading">Powrót</div>
 <a class="nav-link" href="{{ route('mainpage') }}">
     <div class="sb-nav-link-icon"><i class="fas fa-door-closed"></i></div>

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\article;
 use App\Models\subsite;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
 {
@@ -17,11 +17,14 @@ class MainController extends Controller
         $subsites = subsite::visible()
         ->get();
 
+        $contactData = DB::table('contactData')->first();
+
 
 
         return view('layouts.main', [
             'subsites' => $subsites,
-            'articles' => $articles
+            'articles' => $articles,
+            'contactData' => $contactData
         ]);
     }
 }
