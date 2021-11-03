@@ -18,7 +18,7 @@
             </div>
             <div class="card-body">
 
-                <form class="m-0" method="post" action="{{ route('admin.saveContactData') }}">
+                <form class="m-0" method="post" action="{{ route('admin.contactData') }}">
                     @csrf
                             <div class="form-row">
                                 <div class="col-auto">

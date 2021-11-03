@@ -1,83 +1,98 @@
 <?php
+
 declare(strict_types=1);
 
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\FileController;
+use App\Http\Controllers\Admin\SubsiteController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\CKEditorController;
 use App\Http\Controllers\MainController;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', [MainController::class, 'index'])
-->name('mainpage');
+    ->name('mainpage');
 
 Route::group([
     'prefix' => 'administrator',
     'namespace' => 'Admin',
     'as' => 'admin.',
     'middleware' => ['auth'],
-], function(){
+], function () {
 
     Route::get('', [AdminController::class, 'index'])
-    ->name('mainpage');
+        ->name('mainpage');
 
-    Route::get('subsites', [AdminController::class, 'subsites'])
-    ->name('subsites');
+    //SUBSITES CONTROL:
+    Route::group([], function () {
 
-    Route::get('addOrEditSubsite', [AdminController::class, 'addOrEditSubsiteForm'])
-    ->name('addOrEditSubsiteForm');
+        Route::get('subsites', [SubsiteController::class, 'get'])
+            ->name('subsites');
 
-    Route::post('saveSubsite', [AdminController::class, 'saveSubsite'])
-    ->name('saveSubsite');
+        Route::get('addOrEditSubsite', [SubsiteController::class, 'addOrEdit'])
+            ->name('addOrEditSubsiteForm');
 
-    Route::post('deleteSubsite', [AdminController::class, 'deleteSubsite'])
-    ->name('deleteSubsite');
+        Route::post('saveSubsite', [SubsiteController::class, 'save'])
+            ->name('saveSubsite');
 
-    Route::get('articles', [AdminController::class, 'articles'])
-    ->name('articles');
+        Route::post('deleteSubsite', [SubsiteController::class, 'delete'])
+            ->name('deleteSubsite');
+    });
 
-    Route::get('addOrEditArticle', [AdminController::class, 'addOrEditArticleForm'])
-    ->name('addOrEditArticleForm');
+    //ARTICLES CONTROL:
+    Route::group([], function () {
 
-    Route::post('saveArticle', [AdminController::class, 'saveArticle'])
-    ->name('saveArticle');
+        Route::get('articles', [ArticleController::class, 'get'])
+            ->name('articles');
 
-    Route::post('deleteArticle', [AdminController::class, 'deleteArticle'])
-    ->name('deleteArticle');
+        Route::get('addOrEditArticle', [ArticleController::class, 'addOrEdit'])
+            ->name('addOrEditArticleForm');
 
-    Route::get('files', [AdminController::class, 'fileList'])
-    ->name('files');
+        Route::post('saveArticle', [ArticleController::class, 'save'])
+            ->name('saveArticle');
 
-    Route::post('deleteFile', [AdminController::class, 'deleteFile'])
-    ->name('deleteFile');
+        Route::post('deleteArticle', [ArticleController::class, 'delete'])
+            ->name('deleteArticle');
+    });
 
-    Route::get('users', [AdminController::class, 'userList'])
-    ->name('users');
+    //FILES CONTROL:
+    Route::group([], function () {
+        Route::get('files', [FileController::class, 'list'])
+            ->name('files');
 
-    Route::get('addUsers', [AdminController::class, 'addUserForm'])
-    ->name('addUser');
+        Route::post('deleteFile', [FileController::class, 'delete'])
+            ->name('deleteFile');
+    });
 
-    Route::post('saveUser', [AdminController::class, 'saveUser'])
-    ->name('saveUser');
+    //USER CONTROL:
+    Route::group([], function () {
 
-    Route::match(['get', 'post'], 'changePassword', [AdminController::class, 'changePassword'])
-    ->name('changePassword');
+        Route::get('users', [UserController::class, 'list'])
+            ->name('users');
 
-    Route::get('contact', [AdminController::class, 'contact'])
+        Route::get('addUsers', [UserController::class, 'add'])
+            ->name('addUser');
+
+        Route::post('saveUser', [UserController::class, 'save'])
+            ->name('saveUser');
+
+        Route::match(['get', 'post'], 'changePassword', [UserController::class, 'changePassword'])
+            ->name('changePassword');
+    });
+
+    //Contact data control:
+    Route::match(['get', 'post'], 'contact', [AdminController::class, 'contact'])
     ->name('contactData');
 
-    Route::post('contact', [AdminController::class, 'contact'])
-    ->name('saveContactData');
 
+
+    // Route::get('contact', ['])
+    //     ->name('contactData');
+
+    // Route::post('contact', [AdminController::class, 'contact'])
+    //     ->name('saveContactData');
 });
 
 Auth::routes([
@@ -86,5 +101,3 @@ Auth::routes([
 ]);
 
 Route::post('ckeditor/upload', [CKEditorController::class, 'upload'])->name('ckeditor.upload');
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
