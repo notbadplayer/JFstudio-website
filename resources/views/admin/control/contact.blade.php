@@ -23,6 +23,28 @@
                             <div class="form-row">
                                 <div class="col-auto">
                                     <div class="mb-3">
+                                        <label for="title" class="form-label">Tytuł strony:</label>
+                                        <input type="text" class="form-control"
+                                        name="title" id="title"
+                                        value="{{ old('title', $contactData->title ?? '' )}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-auto">
+                                    <div class="mb-3">
+                                        <label for="description" class="form-label">Opis na stronie głównej:</label>
+                                        <input type="text" class="form-control"
+                                        name="description" id="description"
+                                        value="{{ old('description', $contactData->description ?? '' )}}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="col-auto">
+                                    <div class="mb-3">
                                         <label for="adress" class="form-label">Adres:</label>
                                         <input type="text" class="form-control"
                                         name="adress" id="adress"

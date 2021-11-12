@@ -29,6 +29,8 @@ class AdminController extends Controller
         else
         {
             $request->validate([
+                'title' => ['required', 'max:100'],
+                'description' => ['required', 'max:250'],
                 'adress' => ['required', 'max:150'],
                 'email' => ['required', 'max:150', 'email'],
                 'phone' => ['required', 'max:20'],
@@ -37,6 +39,8 @@ class AdminController extends Controller
             DB::table('contactData')
             ->take(1)
             ->update([
+                'title' => $request->title,
+                'description' => $request->description,
                 'adress' => $request->adress,
                 'email' => $request->email,
                 'phone' => $request->phone
