@@ -1,0 +1,50 @@
+// Variables
+@import 'admin/variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
+// Import Custom SCSS
+@import "admin/global";
+
+// Layout
+@import "admin/layout/authentication";
+@import "admin/layout/dashboard-default";
+@import "admin/layout/dashboard-fixed";
+@import "admin/layout/error";
+
+// Navigation
+@import "admin/navigation/nav";
+@import "admin/navigation/topnav";
+@import "admin/navigation/sidenav/sidenav";
+@import "admin/navigation/sidenav/sidenav-dark";
+@import "admin/navigation/sidenav/sidenav-light";
+
+#layoutAuthentication {
+    margin-top: 70px;
+}
+
+.validation-error
+{
+    border: 1px solid red;
+}
+
+.black
+{
+    color:black;
+}
+
+.green
+{
+    color:#38c172;
+}
+
+.red
+{
+    color:#e3342f;
+}
